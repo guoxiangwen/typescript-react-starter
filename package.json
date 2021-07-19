@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node  scripts/start.ts",
-    "build:test": "cross-env ENV=test ts-node --project tsconfig.node.json scripts/build.ts",
+    "build:test": "cross-env ENV=test ts-node scripts/build.ts",
     "commit": "git-cz"
   },
   "config": {

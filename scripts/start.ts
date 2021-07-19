@@ -34,26 +34,6 @@ const server = new wds(
       ignored: /node_modules/,
       poll: 1000,
     },
-    proxy: {
-      "/kic-ops-center": {
-        target: "http://10.8.8.23:35015",
-        secure: false,
-        changeOrigin: true,
-        pathRewrite: { "^/kic-ops-center": "" },
-      },
-      "/kic-erp-data-center": {
-        target: "http://10.8.8.23:7106",
-        secure: false,
-        changeOrigin: true,
-        pathRewrite: { "^/kic-erp-data-center": "" },
-      },
-      "/kic-goods-center": {
-        target: "http://10.8.8.23:7109",
-        secure: false,
-        changeOrigin: true,
-        pathRewrite: { "^/kic-goods-center": "" },
-      },
-    },
   })
 );
 

@@ -8,7 +8,18 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node  scripts/start.ts",
-    "build:test": "cross-env ENV=test ts-node --project tsconfig.node.json scripts/build.ts"
+    "build:test": "cross-env ENV=test ts-node --project tsconfig.node.json scripts/build.ts",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $GIT_PARAMS"
+    }
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",
@@ -16,6 +27,7 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.14.5",
+    "@commitlint/cli": "^12.1.4",
     "@types/css-minimizer-webpack-plugin": "^3.0.2",
     "@types/fs-extra": "^9.0.12",
     "@types/mini-css-extract-plugin": "^2.0.1",
@@ -27,12 +39,17 @@
     "@types/webpack-dev-server": "^3.11.5",
     "babel-loader": "^8.2.2",
     "cache-loader": "^4.1.0",
+    "commitizen": "^4.2.4",
+    "commitlint-config-cz": "^0.13.2",
     "cross-env": "^7.0.3",
     "css-minimizer-webpack-plugin": "^3.0.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
     "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.1",
     "mini-css-extract-plugin": "^2.1.0",
     "open": "^8.2.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",

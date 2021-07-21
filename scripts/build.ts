@@ -27,7 +27,7 @@ envLog(`NODE_ENV: ${process.env.NODE_ENV}`);
 const runBuild = (env: Env) =>
   new Promise<any>((resolve, reject) => {
     const conf = config(env);
-    const compiler = webpack(conf);
+    const compiler = webpack(withSMPConfig(conf));
     try {
       compiler.run((err, stats) => {
         if (err) {

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const App = () => <div>App3</div>;
+import App from "./pages/App";
 
 ReactDOM.render(<App />, document.getElementById("app") as HTMLElement);

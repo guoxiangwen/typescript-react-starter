@@ -1,30 +1,29 @@
-'use strict';
+"use strict";
 
 module.exports = {
   types: [
-    { value: 'feat', name: '✨ feat:     A new feature' },
-    { value: 'fix', name: '🐞 fix:      A bug fix' },
-    { value: 'docs', name: '📚 docs:     Documentation only changes' },
+    { value: "feat", name: "✨ feat:     A new feature" },
+    { value: "fix", name: "🐞 fix:      A bug fix" },
+    { value: "docs", name: "📚 docs:     Documentation only changes" },
     {
-      value: 'style',
-      name:
-        '🌀 style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
+      value: "style",
+      name: "🌀 style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
     },
     {
-      value: 'refactor',
-      name: '🛠 refactor: A code change that neither fixes a bug nor adds a feature',
+      value: "refactor",
+      name: "🛠 refactor: A code change that neither fixes a bug nor adds a feature",
     },
     {
-      value: 'perf',
-      name: 'perf:  A code change that improves performance',
+      value: "perf",
+      name: "perf:  A code change that improves performance",
     },
-    { value: 'test', name: '🏁 test:     Adding missing tests' },
+    { value: "test", name: "🏁 test:     Adding missing tests" },
     {
-      value: 'chore',
-      name: '💅 chore: Changes to the build process or auxiliary tools and libraries such as documentation generation',
+      value: "chore",
+      name: "💅 chore: Changes to the build process or auxiliary tools and libraries such as documentation generation",
     },
-    { value: 'revert', name: '⏪ revert:   Revert to a commit' },
-    { value: 'wip', name: '💪 wip:      Work in progress' },
+    { value: "revert", name: "⏪ revert:   Revert to a commit" },
+    { value: "wip", name: "💪 wip:      Work in progress" },
   ],
   // types: [
   //   {
@@ -65,51 +64,30 @@ module.exports = {
   //   },
   // ],
   messages: {
-    type: '选择一种你的提交类型:',
-    scope: '选择一个scope (可选):',
+    type: "选择一种你的提交类型:",
+    scope: "选择一个scope (可选):",
     // used if allowCustomScopes is true
-    customScope: '表示此次更改的范围(可选):',
-    subject: '短说明(主体)(可选):\n',
+    customScope: "表示此次更改的范围(可选):",
+    subject: "短说明(主体)(可选):\n",
     body: '长说明,使用"|"换行(可选)：\n',
-    breaking: '非兼容性说明 (可选):\n',
-    footer: '关联关闭的issue bug，例如：#31, #34(可选):\n',
-    confirmCommit: '确定提交说明?',
+    breaking: "非兼容性说明 (可选):\n",
+    footer: "关联关闭的issue bug，例如：#31, #34(可选):\n",
+    confirmCommit: "确定提交说明?",
   },
   scopes: [
     {
-      name: '客户',
+      name: "业务模块1",
     },
     {
-      name: '客户详情',
+      name: "业务模块2",
     },
     {
-      name: '拜访',
-    },
-    {
-      name: '商机',
-    },
-    {
-      name: '任务',
-    },
-    {
-      name: '问题',
-    },
-    {
-      name: '客户(运维)',
-    },
-    {
-      name: '报表',
-    },
-    {
-      name: '管理',
-    },
-    {
-      name: '其它',
+      name: "业务模块3",
     },
   ],
 
   allowCustomScopes: true,
-  allowBreakingChanges: ['feat', 'fix'],
+  allowBreakingChanges: ["feat", "fix"],
   // limit subject length
   subjectLimit: 100,
 };

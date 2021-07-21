@@ -3,40 +3,16 @@ import open from "open";
 import webpack from "webpack";
 import wds from "webpack-dev-server";
 
-import genEnv, { Env } from "./../config/env";
-import { PUBLIC_FOLDER } from "../config/path";
+import genEnv from "./../config/env";
 import webpackConfig from "../config/webpack.config";
+import webpackDevServerConfig from "../config/webpackDevServerConfig";
 
 // default local env
-const { HOST, PORT, PUBLIC_URL } = genEnv("local");
+const { HOST, PORT } = genEnv("local");
 const compiler = webpack(webpackConfig("local") as any);
-const server = new wds(
-  compiler,
-  Object.assign({
-    contentBase: PUBLIC_FOLDER,
-    historyApiFallback: true,
-    disableHostCheck: true,
-    hot: true,
-    overlay: true,
-    publicPath: PUBLIC_URL,
-    https: false,
-    stats: {
-      assets: false,
-      builtAt: true,
-      colors: true,
-      entrypoints: false,
-      hash: false,
-      modules: false,
-      performance: false,
-    },
-    watchOptions: {
-      aggregateTimeout: 300,
-      ignored: /node_modules/,
-      poll: 1000,
-    },
-  })
-);
+const server = new wds(compiler, webpackDevServerConfig);
 
+// run webpack-dev-server
 server.listen(Number(PORT), HOST, async () => {
   const url = `http://localhost:${Number(PORT)}${process.env.PUBLIC_URL || ""}`;
   try {

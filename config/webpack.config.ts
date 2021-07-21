@@ -1,17 +1,17 @@
 import webpack from "webpack";
 import path from "path";
-import { Configuration } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
-import { BUILD_PATH, TEMPLATE_FILE, APP_PATH } from "./path";
+import { BUILD_PATH, TEMPLATE_FILE, APP_PATH, TS_CONFIG } from "./path";
 import genEnv, { Env } from "./env";
 
 const { DefinePlugin, HotModuleReplacementPlugin, IgnorePlugin } = webpack;
 
-export default (env: Env): Partial<any> => {
+export default (env: Env): any => {
   const envVar = genEnv(env);
   const { PUBLIC_URL } = envVar;
   const isDevelopment = envVar.NODE_ENV === "development";
@@ -161,6 +161,9 @@ export default (env: Env): Partial<any> => {
         ".web.jsx",
         ".jsx",
       ],
+      modules: ["node_modules", APP_PATH],
+      plugins: [new TsconfigPathsPlugin({ configFile: TS_CONFIG })],
+      symlinks: false,
     },
   };
 };

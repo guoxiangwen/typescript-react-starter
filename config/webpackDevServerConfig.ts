@@ -1,5 +1,6 @@
 import { PUBLIC_FOLDER } from "./path";
 import genEnv, { Env } from "./env";
+import wds from "webpack-dev-server";
 
 // default local env
 const { PUBLIC_URL } = genEnv("local");
@@ -26,4 +27,5 @@ export default {
     ignored: /node_modules/,
     poll: 1000,
   },
-};
+  
+} as wds.Configuration;

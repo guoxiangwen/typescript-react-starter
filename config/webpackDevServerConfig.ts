@@ -3,29 +3,18 @@ import genEnv, { Env } from "./env";
 import wds from "webpack-dev-server";
 
 // default local env
-const { PUBLIC_URL } = genEnv("local");
+const { PUBLIC_URL, PORT } = genEnv("local");
 
 export default {
-  contentBase: PUBLIC_FOLDER,
+  allowedHosts: "all",
+  client: { logging: "error", progress: true, overlay: true },
+  // contentBase: PUBLIC_FOLDER,
   historyApiFallback: true,
-  disableHostCheck: true,
+  port: Number(PORT),
   hot: true,
-  overlay: true,
-  publicPath: PUBLIC_URL,
+  static: {
+    publicPath: PUBLIC_URL,
+  },
   https: false,
-  stats: {
-    assets: false,
-    builtAt: true,
-    colors: true,
-    entrypoints: false,
-    hash: false,
-    modules: false,
-    performance: false,
-  },
-  watchOptions: {
-    aggregateTimeout: 300,
-    ignored: /node_modules/,
-    poll: 1000,
-  },
-  
+  setupExitSignals: true,
 } as wds.Configuration;

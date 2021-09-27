@@ -9,6 +9,7 @@ const App: React.FC<IAppProps> = () => {
   return (
     <div>
       <img src={png} alt="png" />
+      <p>react app</p>
     </div>
   );
 };

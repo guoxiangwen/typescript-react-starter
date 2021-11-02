@@ -9,7 +9,7 @@ import webpackDevServerConfig from "../config/webpackDevServerConfig";
 
 // default local env
 const { HOST, PORT } = genEnv("local");
-const compiler = webpack(webpackConfig("local") as any);
+const compiler = webpack(webpackConfig("local") as any) as any;
 const server = new wds(webpackDevServerConfig, compiler);
 
 // run webpack-dev-server

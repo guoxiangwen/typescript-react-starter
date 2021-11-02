@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 /** define your own env */
-export type Env = "local" | "dev" | "test" | "gld" | "prd";
+export type Env = "local" | "dev" | "test" | "uat" | "prd";
 export interface IConfig {
   [name: string]: string;
 }

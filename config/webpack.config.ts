@@ -1,20 +1,23 @@
 import webpack from "webpack";
 import path from "path";
+// plugins
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
 
 import { BUILD_PATH, TEMPLATE_FILE, APP_PATH, TS_CONFIG } from "./path";
 import genEnv, { Env } from "./env";
 
-const { DefinePlugin, HotModuleReplacementPlugin, IgnorePlugin } = webpack;
+const { DefinePlugin, IgnorePlugin } = webpack;
 
 export default (env: Env): any => {
   const envVar = genEnv(env);
   const { PUBLIC_URL } = envVar;
   const isDevelopment = envVar.NODE_ENV === "development";
+  // 处理环境变量
   const DefinedEnvs = Object.entries(envVar).reduce(
     (map, [key, value]) =>
       Object.assign(map, {
@@ -142,12 +145,8 @@ export default (env: Env): any => {
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/,
       }),
-    ].concat(
-      isDevelopment
-        ? ([new HotModuleReplacementPlugin()] as ConcatArray<any>)
-        : []
-    ),
-
+      new ProgressBarPlugin()
+    ],
     resolve: {
       extensions: [
         ".mjs",
@@ -162,6 +161,7 @@ export default (env: Env): any => {
         ".jsx",
       ],
       modules: ["node_modules", APP_PATH],
+      // 用于匹配 typescript中 引入相对路径,例如"import util from '@util/index'"
       plugins: [new TsconfigPathsPlugin({ configFile: TS_CONFIG })],
       symlinks: false,
     },

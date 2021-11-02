@@ -23,7 +23,6 @@ envLog(`NPM: ${execSync("npm -v")}`.replace("\n", ""));
 envLog(`Node: ${process.version}`);
 envLog(`ENV: ${process.env.ENV}`);
 envLog(`NODE_ENV: ${process.env.NODE_ENV}`);
-
 const runBuild = (env: Env) =>
   new Promise<any>((resolve, reject) => {
     const conf = config(env);

@@ -1,8 +1,8 @@
 import React from "react";
-interface IindexProps {
+interface ILoginProps {
   test?: string;
 }
-const index: React.FC<IindexProps> = () => {
+const Login: React.FC<ILoginProps> = () => {
   return <div>Login</div>;
 };
-export default index;
+export default Login;
